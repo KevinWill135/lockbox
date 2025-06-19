@@ -6,6 +6,11 @@ function base_path($path)
         return __DIR__ . '/../' . $path;
 }
 
+function redirect($uri)
+{
+        return header("Location: $uri");
+}
+
 function views($view, $data = [])
 {
         foreach ($data as $key => $value) {
@@ -40,7 +45,7 @@ function flash()
 
 function config($chave = null)
 {
-        $config = require base_path("config.php");
+        $config = require base_path("/config/config.php");
 
         if (strlen($chave) > 0) {
                 return $config[$chave];

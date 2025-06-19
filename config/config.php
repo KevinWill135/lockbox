@@ -4,6 +4,6 @@ return [
 
         'database' => [
                 'driver' => 'sqlite',
-                'database' => '../database.sqlite'
+                'database' => base_path('database/database.sqlite')
         ]
 ];

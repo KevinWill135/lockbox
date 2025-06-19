@@ -1,4 +1,0 @@
-<?php
-
-
-views('index');

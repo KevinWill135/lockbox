@@ -12,7 +12,7 @@ class LoginController
 {
         public function index()
         {
-                return views('login');
+                return views('login', template: 'guest');
         }
 
         public function login()
@@ -26,7 +26,7 @@ class LoginController
                 ], $_POST);
 
                 if ($validacao->naoPassou()) {
-                        return views('login');
+                        return views('login', template: 'guest');
                 }
 
                 $database = new Database(config('database'));
@@ -39,9 +39,9 @@ class LoginController
                         ]
                 )->fetch();
 
-                if (!($usuario && password_verify($_POST['password'], $usuario->senha))) {
+                if (!($usuario && password_verify($password, $usuario->senha))) {
                         flash()->push('validacoes', ['email' => ['Email ou senha estão incorretos']]);
-                        return views('login');
+                        return views('login', template: 'guest');
                 }
 
                 //validando a senha
@@ -49,6 +49,6 @@ class LoginController
 
                 flash()->push('mensagem', 'Seja bem vindo ' . $usuario->nome . '!');
 
-                return redirect('/dashboard');
+                return redirect('/notas');
         }
 }

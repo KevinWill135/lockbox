@@ -11,13 +11,13 @@ function redirect($uri)
         return header("Location: $uri");
 }
 
-function views($view, $data = [])
+function views($view, $data = [], $template = 'app')
 {
         foreach ($data as $key => $value) {
                 $$key = $value;
         }
 
-        require base_path('views/template/app.php');
+        require base_path("views/template/$template.php");
 }
 
 function dd(...$dump)
@@ -71,4 +71,10 @@ function old($campo)
         }
 
         return '';
+}
+
+
+function request()
+{
+        return new Core\Request;
 }

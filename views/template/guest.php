@@ -12,21 +12,8 @@
 </head>
 
 <body>
-        <div class="mx-auto max-w-screen-lg h-screen flex flex-col space-y-4">
-                <?php require base_path('views/partials/_navbar.view.php'); ?>
 
-                <?php require base_path('views/partials/_pesquisa.view.php'); ?>
-
-                <?php require base_path('views/partials/_mensagem.view.php'); ?>
-
-
-                <div class="h-svh flex flex-grow py-6">
-
-                        <?php require base_path("views/{$view}.view.php"); ?>
-
-                </div>
-
-        </div>
+        <?php require "../views/{$view}.view.php"; ?>
 
 </body>
 

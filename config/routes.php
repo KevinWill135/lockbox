@@ -23,5 +23,6 @@ use App\Controllers\Notas\CriarController;
         ->get('/notas/criar', [CriarController::class, 'index'], AuthMiddleware::class)
         ->post('/notas/criar', [CriarController::class, 'store'], AuthMiddleware::class)
         ->put('/nota', Notas\AtualizarController::class, AuthMiddleware::class)
+        ->delete('/nota', Notas\DeletarController::class, AuthMiddleware::class)
 
         ->run();

@@ -4,10 +4,10 @@ namespace App\Middleware;
 
 class GuestMiddleware
 {
-        public function handle()
-        {
-                if (auth()) {
-                        return redirect('/notas');
-                }
+    public function handle()
+    {
+        if (auth()) {
+            return redirect('/notas');
         }
+    }
 }

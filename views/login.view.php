@@ -27,18 +27,18 @@
                                                                 name="email"
                                                                 class="input input-neutral w-full max-w-xs bg-white"
                                                                 value="<?= old('email') ?>" />
-                                                        <?php if (isset($validacoes['email'])): ?>
+                                                        <?php if (isset($validacoes['email'])) { ?>
                                                                 <div class="label text-xs text-error"><?= $validacoes['email'][0] ?></div>
-                                                        <?php endif; ?>
+                                                        <?php } ?>
                                                 </label>
                                                 <label for="" class="form-control w-full max-w-xs">
                                                         <div class="label">
                                                                 <span class="label-text text-black">Senha</span>
                                                         </div>
                                                         <input type="password" name="password" class="input input-neutral w-full max-w-xs bg-white" />
-                                                        <?php if (isset($validacoes['password'])): ?>
+                                                        <?php if (isset($validacoes['password'])) { ?>
                                                                 <div class="label text-xs text-error"><?= $validacoes['password'][0] ?></div>
-                                                        <?php endif; ?>
+                                                        <?php } ?>
                                                 </label>
                                                 <div class="card-actions justify-end">
                                                         <button class="btn btn-primary btn-block">Login</button>

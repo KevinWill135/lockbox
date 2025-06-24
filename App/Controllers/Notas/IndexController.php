@@ -4,31 +4,29 @@ namespace App\Controllers\Notas;
 
 use App\Models\Nota;
 
-
 class IndexController
 {
-        public function __invoke()
-        {
+    public function __invoke()
+    {
 
-                $pesquisar = request()->get('pesquisa');
-                $notas = Nota::all($pesquisar);
+        $notas = Nota::all(request()->get('pesquisa'));
 
-                if (!$notaSelecionada = $this->getNotaSelecionada($notas)) {
-                        return views('notas/nao-encontrada');
-                }
-
-
-                return views('notas/index', [
-                        'notas' => $notas,
-                        'notaSelecionada' => $notaSelecionada
-                ]);
+        if (! $notaSelecionada = $this->getNotaSelecionada($notas)) {
+            return views('notas/nao-encontrada');
         }
 
-        private function getNotaSelecionada($notas)
-        {
-                $id = request()->get('id', '', (sizeof($notas) > 0 ? $notas[0]->id : null));
+        return views('notas/index', [
+            'notas' => $notas,
+            'notaSelecionada' => $notaSelecionada,
+        ]);
+    }
 
-                $filtro = array_filter($notas, fn($n) => $n->id == $id);
-                return array_pop($filtro);
-        }
+    private function getNotaSelecionada($notas)
+    {
+        $id = request()->get('id', '', (count($notas) > 0 ? $notas[0]->id : null));
+
+        $filtro = array_filter($notas, fn ($n) => $n->id == $id);
+
+        return array_pop($filtro);
+    }
 }

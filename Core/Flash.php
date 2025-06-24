@@ -4,23 +4,23 @@ namespace Core;
 
 class Flash
 {
-        //adicionando valores
-        public function push($chave, $valor)
-        {
-                $_SESSION["flash_$chave"] = $valor;
+    // adicionando valores
+    public function push($chave, $valor)
+    {
+        $_SESSION["flash_$chave"] = $valor;
+    }
+
+    public function get($chave)
+    {
+
+        if (! isset($_SESSION["flash_$chave"])) {
+            return false;
         }
 
-        public function get($chave)
-        {
+        $valor = $_SESSION["flash_$chave"];
 
-                if (!isset($_SESSION["flash_$chave"])) {
-                        return false;
-                }
+        unset($_SESSION["flash_$chave"]);
 
-                $valor = $_SESSION["flash_$chave"];
-
-                unset($_SESSION["flash_$chave"]);
-
-                return $valor;
-        }
+        return $valor;
+    }
 }
